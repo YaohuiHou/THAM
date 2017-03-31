@@ -155,7 +155,7 @@
     export default {
         call (){
             //   native操作
-            weex.requireModule('THAW').openLocation(latitude,longitude,"auto");
+            weex.requireModule('THAW').openLocation({latitude：' ',longitude : ' ',type:'auto'});
         }
     }
 </script>
