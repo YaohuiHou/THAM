@@ -13,6 +13,8 @@
 - [拍照或从手机相册中选图接口](#拍照或从手机相册中选图接口)
 - [获取经纬度](#获取经纬度)
 - [根据经纬度显示地图](#根据经纬度显示地图)
+- [判断是否登陆](#判断是否登陆)
+- [判断是否登陆](#去登陆)
 - [分享](#分享)
 - [如果请求失败，返回格式](#如果请求失败，返回格式)
 
@@ -164,11 +166,52 @@
     export default {
         call (){
             //   native操作
-            weex.requireModule('THAW').openLocation({latitude：' ',longitude : ' ',type:'auto'});
+            weex.requireModule('THAW').onShowMap({latitude : ' ',longitude : ' ',type:'auto'});
         }
     }
 </script>
 ```
+
+# 判断是否登陆
+判断用户是否登陆，登陆返回用户的id，未登录返回为0，返回JSON：{state:'success',data:'0'}
+
+```
+<!--html-->
+<template>
+    <div @click="call" class="phone"></div>
+</template>
+
+<!--js-->
+<script>
+    export default {
+        call (){
+            //   native操作
+            weex.requireModule('THAW').onIsLogin();
+        }
+    }
+</script>
+```
+
+# 去登陆
+调起登陆弹层
+
+```
+<!--html-->
+<template>
+    <div @click="call" class="phone"></div>
+</template>
+
+<!--js-->
+<script>
+    export default {
+        call (){
+            //   native操作
+            weex.requireModule('THAW').onGoLogin();
+        }
+    }
+</script>
+```
+
 
 # 分享
 
@@ -184,10 +227,11 @@
         call (){
             //   native操作
             weex.requireModule('THAW').onMenuShare({
-                title:"",   // 分享文案
-                img:"",     // 分享图片链接
-                link:""     // 分享链接
-                });
+                title: "", // 分享标题
+                desc: "", // 分享描述
+                link: "", // 分享链接
+                imgUrl: "" // 分享图标
+            });
         }
     }
 </script>
