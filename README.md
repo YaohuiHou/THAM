@@ -11,11 +11,16 @@
 - [主动获取客户端信息](#主动获取客户端信息)
 - [拨打电话](#拨打电话)
 - [拍照或从手机相册中选图接口](#拍照或从手机相册中选图接口)
+- [监听上传图片回调](#监听上传图片回调)
 - [获取经纬度](#获取经纬度)
 - [根据经纬度显示地图](#根据经纬度显示地图)
 - [判断是否登陆](#判断是否登陆)
 - [去登陆](#去登陆)
+- [登陆回调](#登陆回调)
+- [地理位置提交](#地理位置提交)
 - [分享](#分享)
+- [显示正在加载弹层](#显示正在加载弹层)
+- [隐藏正在加载弹层](#隐藏正在加载弹层)
 - [如果请求失败，返回格式](#如果请求失败，返回格式)
 
 # **返回按钮**
@@ -127,6 +132,29 @@
 </script>
 ```
 
+# 监听上传图片回调
+用户上传图片的时候监听是否上传成功，返回JSON：{imageUpload:'图片预览地址'}
+
+```
+<!--html-->
+<template>
+    <div @click="call" class="phone"></div>
+</template>
+
+<!--js-->
+let globalEvent = weex.requireModule('globalEvent');
+<script>
+    export default {
+        call (){
+            //   native操作
+            globalEvent.addEventListener('chooseImageCallBack',function(res){
+
+            });
+        }
+    }
+</script>
+```
+
 
 # 获取经纬度
 获取用户当前设备所在位置的经纬度。
@@ -213,6 +241,53 @@
 ```
 
 
+# 登陆回调
+点击去登陆的时候监听用户登陆是否成功，如果成功返回用户的userId 返回JSON：{userId:''}
+
+```
+<!--html-->
+<template>
+    <div @click="call" class="phone"></div>
+</template>
+
+<!--js-->
+let globalEvent = weex.requireModule('globalEvent');
+<script>
+    export default {
+        call (){
+            //   native操作
+            globalEvent.addEvenetListener('onGoLoginCallBack',function(data){
+                
+            })
+        }
+    }
+</script>
+```
+
+# 地理位置提交
+点击按钮返回用户选择的经纬度和街道名称 返回JSON：{longitude:'',latitude:'',address:''}
+
+```
+<!--html-->
+<template>
+    <div @click="call" class="phone"></div>
+</template>
+
+<!--js-->
+let globalEvent = weex.requireModule('globalEvent');
+<script>
+    export default {
+        call (){
+            //   native操作
+            globalEvent.addEventListener('onLocationCommit',function(res){
+
+            });
+        }
+    }
+</script>
+```
+
+
 # 分享
 
 ```
@@ -232,6 +307,67 @@
                 link: "", // 分享链接
                 imgUrl: "" // 分享图标
             });
+        }
+    }
+</script>
+```
+
+
+# 显示正在加载弹层
+    接受一个string参数，正在加载的文案显示为所传的参数
+```
+<!--html-->
+<template>
+    <div @click="call" class="phone"></div>
+</template>
+
+<!--js-->
+<script>let
+     let thaw = weex.requireModule('THAW')
+     export default {
+        call (){
+            //   native操作
+            thaw.onMenuShare('正在加载中...');
+        }
+    }
+</script>
+```
+
+# 隐藏正在加载弹层
+    隐藏正在加载的弹层
+```
+<!--html-->
+<template>
+    <div @click="call" class="phone"></div>
+</template>
+
+<!--js-->
+<script>let
+     let thaw = weex.requireModule('THAW')
+     export default {
+        call (){
+            //   native操作
+            thaw.onHideLoading('正在加载中...');
+        }
+    }
+</script>
+```
+
+# 响应客户端返回按键
+    直接返回到app页面
+```
+<!--html-->
+<template>
+    <div @click="call" class="phone"></div>
+</template>
+
+<!--js-->
+<script>let
+     let thaw = weex.requireModule('THAW')
+     export default {
+        call (){
+            //   native操作
+            thaw.onGoBack();
         }
     }
 </script>
