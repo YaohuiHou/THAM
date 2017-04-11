@@ -327,7 +327,7 @@ let globalEvent = weex.requireModule('globalEvent');
      export default {
         call (){
             //   native操作
-            thaw.onMenuShare('正在加载中...');
+            thaw.onShowLoading('正在加载中...');
         }
     }
 </script>
@@ -347,7 +347,7 @@ let globalEvent = weex.requireModule('globalEvent');
      export default {
         call (){
             //   native操作
-            thaw.onHideLoading('正在加载中...');
+            thaw.onHideLoading();
         }
     }
 </script>
