@@ -294,7 +294,7 @@ let globalEvent = weex.requireModule('globalEvent');
     export default {
         call (){
             //   native操作
-            globalEvent.addEvenetListener('onGoLoginCallBack',function(data){
+            globalEvent.addEventListener('onGoLoginCallBack',function(data){
                 
             })
         }
@@ -338,7 +338,7 @@ let globalEvent = weex.requireModule('globalEvent');
     export default {
         call (){
             //   native操作
-            weex.requireModule('THAW').onMenuShare({
+            weex.requireModule('THAW').onShowShare({
                 title: "", // 分享标题
                 desc: "", // 分享描述
                 link: "", // 分享链接
