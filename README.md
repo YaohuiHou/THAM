@@ -52,7 +52,7 @@
           return ;
         }
         //   native操作
-        weex.requireModule('thaw').onGoBack("1");
+        weex.requireModule('THAW').onGoBack("1");
         return ;
       }
     }
@@ -75,8 +75,8 @@
     export default {
         created () {
             var me = this;
-            var thaw = weex.requireModule('thaw');
-            thaw.onGetData('1',function(ret) {  
+            var THAW = weex.requireModule('thaw');
+            THAW.onGetData('1',function(ret) {  
                 me.userid = ret.userid;
                 me.userName = ret.userName;
                 //执行操作
@@ -105,7 +105,7 @@
     export default {
         call (){
             //   native操作
-            weex.requireModule('thaw').onGoCall("400-800-1616");
+            weex.requireModule('THAW').onGoCall("400-800-1616");
         }
     }
 </script>
