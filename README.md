@@ -358,7 +358,7 @@ let globalEvent = weex.requireModule('globalEvent');
 </template>
 
 <!--js-->
-<script>let
+<script>
      let thaw = weex.requireModule('THAW')
      export default {
         call (){
@@ -378,7 +378,7 @@ let globalEvent = weex.requireModule('globalEvent');
 </template>
 
 <!--js-->
-<script>let
+<script>
      let thaw = weex.requireModule('THAW')
      export default {
         call (){
@@ -398,16 +398,39 @@ let globalEvent = weex.requireModule('globalEvent');
 </template>
 
 <!--js-->
-<script>let
-     let thaw = weex.requireModule('THAW')
+<script>
+    let globalEvent = weex.requireModule('globalEvent');
      export default {
         call (){
+            //   native操作
+            globalEvent.addEventListener('onRespondNativeBack',function(data){
+                
+            })
+        }
+    }
+</script>
+```
+
+# 关闭应用，直接退出
+    直接返回到app页面
+```
+<!--html-->
+<template>
+    <div @click="back" class="back"></div>
+</template>
+
+<!--js-->
+<script>
+     let thaw = weex.requireModule('THAW')
+     export default {
+        back (){
             //   native操作
             thaw.onGoBack();
         }
     }
 </script>
 ```
+
 
 # 如果请求失败，返回格式
 JSON：{state:error,data,"失败原因"}
